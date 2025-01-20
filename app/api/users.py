@@ -13,7 +13,7 @@ def create_user():
     db.session.add(new_user)
     db.session.commit()
     return make_response(jsonify({'message': 'user created'}), 201)
-  except e:
+  except:
     return make_response(jsonify({'message': 'error creating user'}), 500)
 
 # Get all users
@@ -22,7 +22,7 @@ def get_users():
   try:
     users = User.query.all()
     return make_response(jsonify([user.json() for user in users]), 200)
-  except e:
+  except:
     return make_response(jsonify({'message': 'error getting users'}), 500)
 
 # Get a user by id
@@ -33,7 +33,7 @@ def get_user(id):
     if user:
       return make_response(jsonify({'user': user.json()}), 200)
     return make_response(jsonify({'message': 'user not found'}), 404)
-  except e:
+  except:
     return make_response(jsonify({'message': 'error getting user'}), 500)
 
 # Update a user
@@ -48,7 +48,7 @@ def update_user(id):
       db.session.commit()
       return make_response(jsonify({'message': 'user updated'}), 200)
     return make_response(jsonify({'message': 'user not found'}), 404)
-  except e:
+  except:
     return make_response(jsonify({'message': 'error updating user'}), 500)
 
 # Delete a user
@@ -61,5 +61,5 @@ def delete_user(id):
       db.session.commit()
       return make_response(jsonify({'message': 'user deleted'}), 200)
     return make_response(jsonify({'message': 'user not found'}), 404)
-  except e:
+  except:
     return make_response(jsonify({'message': 'error deleting user'}), 500)
