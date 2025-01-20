@@ -1,9 +1,11 @@
 from flask import Flask, jsonify, make_response
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from app.config import Config
 
 
 db = SQLAlchemy()
+migrate = Migrate()
 
 def create_app():
     app = Flask(__name__)
@@ -11,6 +13,7 @@ def create_app():
 
     # Initialize extensions
     db.init_app(app)
+    migrate.init_app(app, db)
 
     # Register blueprints
     from app.api import bp as api_bp
@@ -26,3 +29,5 @@ def create_app():
       return make_response(jsonify({'message': 'test route'}), 200)
 
     return app
+
+from app import models
