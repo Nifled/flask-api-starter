@@ -10,4 +10,7 @@ COPY . .
 
 EXPOSE 4000
 
+# Set environment variables for Flask
+ENV FLASK_APP=app
+
 CMD [ "flask", "run", "--host=0.0.0.0", "--port=4000"]
