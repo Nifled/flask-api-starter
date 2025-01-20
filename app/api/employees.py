@@ -1,5 +1,4 @@
 from flask import jsonify, make_response
-# from app.models import User
 from app.api import bp
 
 

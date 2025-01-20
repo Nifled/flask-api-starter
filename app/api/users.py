@@ -4,7 +4,7 @@ from app.models import User
 from app.api import bp
 
 
-# create a user
+# Create a user
 @bp.route('/users', methods=['POST'])
 def create_user():
   try:
@@ -16,7 +16,7 @@ def create_user():
   except e:
     return make_response(jsonify({'message': 'error creating user'}), 500)
 
-# get all users
+# Get all users
 @bp.route('/users', methods=['GET'])
 def get_users():
   try:
@@ -25,7 +25,7 @@ def get_users():
   except e:
     return make_response(jsonify({'message': 'error getting users'}), 500)
 
-# get a user by id
+# Get a user by id
 @bp.route('/users/<int:id>', methods=['GET'])
 def get_user(id):
   try:
@@ -36,7 +36,7 @@ def get_user(id):
   except e:
     return make_response(jsonify({'message': 'error getting user'}), 500)
 
-# update a user
+# Update a user
 @bp.route('/users/<int:id>', methods=['PUT'])
 def update_user(id):
   try:
@@ -51,7 +51,7 @@ def update_user(id):
   except e:
     return make_response(jsonify({'message': 'error updating user'}), 500)
 
-# delete a user
+# Delete a user
 @bp.route('/users/<int:id>', methods=['DELETE'])
 def delete_user(id):
   try:
